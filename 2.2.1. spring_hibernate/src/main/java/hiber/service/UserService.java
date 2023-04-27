@@ -10,7 +10,5 @@ void add(User user);
 
 List<User> listUsers();
 
-
-
 List<User> findUserbyCar(String model, int series);
 }

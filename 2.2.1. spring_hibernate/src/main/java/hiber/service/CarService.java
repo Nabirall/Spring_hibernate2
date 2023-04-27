@@ -1,9 +1,13 @@
 package hiber.service;
 
 import hiber.model.Car;
+import hiber.model.User;
+
+import java.util.List;
 
 public interface CarService {
-public interface CarDao {
-    void add(Car car);
-}
+
+void add(Car car);
+
+
 }

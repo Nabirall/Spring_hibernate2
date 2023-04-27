@@ -7,15 +7,15 @@ import javax.persistence.*;
 public class User {
 
 @OneToOne(mappedBy = "carUser")
-private Car userCar;
+private Car car;
 
 
 public Car getUserCar() {
-    return userCar;
+    return car;
 }
 
-public void setUserCar(Car userCar) {
-    this.userCar = userCar;
+public void setUserCar(Car car) {
+    this.car = car;
 }
 
 @Id

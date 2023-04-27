@@ -12,4 +12,3 @@ public void add(Car car) {
     sessionFactory.getCurrentSession().save(car);
 }
 }
-

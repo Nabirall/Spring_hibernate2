@@ -12,14 +12,14 @@ public Car(String model, int series) {
 }
 @OneToOne()
 @JoinColumn(name = "user_id")
-private Car carUser;
+private User carUser;
 
 
-public Car getCarUser() {
+public User getCarUser() {
     return carUser;
 }
 
-public void setCarUser(Car carUser) {
+public void setCarUser(User carUser) {
     this.carUser = carUser;
 }
 

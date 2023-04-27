@@ -38,4 +38,5 @@ public List<User> findUserbyCar(String model, int series) {
     return result.getResultList();
 }
 
+
 }
