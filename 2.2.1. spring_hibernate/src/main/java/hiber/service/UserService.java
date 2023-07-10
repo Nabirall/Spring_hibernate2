@@ -2,6 +2,7 @@ package hiber.service;
 
 import hiber.model.Car;
 import hiber.model.User;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -10,5 +11,8 @@ void add(User user);
 
 List<User> listUsers();
 
-List<User> findUserbyCar(String model, int series);
+User findUserbyCar(String model, int series);
+
+@Transactional(readOnly = true)
+User findUserbyCars(Car car);
 }

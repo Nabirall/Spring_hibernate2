@@ -11,5 +11,7 @@ void add(User user);
 List<User> listUsers();
 
 
-List<User> findUserbyCar(String model, int series);
+User findUserbyCar(String model, int series);
+
+User findUserbyCars(Car car);
 }

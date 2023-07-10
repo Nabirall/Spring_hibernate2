@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
@@ -28,15 +29,19 @@ public List<User> listUsers() {
 }
 
 @Override
-public List<User> findUserbyCar(String model, int series) {
-    TypedQuery<Car> query = sessionFactory.getCurrentSession().createQuery("from cars where model = :model and series= :series")
-            .setParameter("model", model)
-            .setParameter("series", series);
-    Car qwe=query.getResultList().get(3);
-    TypedQuery<User> result=sessionFactory.getCurrentSession().createQuery("from users where id =:id")
-            .setParameter("id",qwe);
-    return result.getResultList();
+@SuppressWarnings("unchecked")
+public User findUserbyCar(String model, int series) {
+    TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User user where user.car.model = :model and user.car.series = :series");
+    query.setParameter("model", model).setParameter("series", series);
+    return query.setMaxResults(1).getSingleResult();
 }
 
-
+@Override
+@SuppressWarnings("unchecked")
+public User findUserbyCars(Car car) {
+    String hql = "from User user where user.car.model = :model and user.car.series = :series";
+    TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery(hql);
+    query.setParameter("model", car.getModel()).setParameter("series", car.getSeries());
+    return query.setMaxResults(1).getSingleResult();
+}
 }
